@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booma — Coming 2026</title>
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.8.1/dist/dotlottie-wc.js" type="module"></script>
+    <style>
+        /* CSS Variables and Theme Setup */
+        :root {
+            --bg: #F9F8FF;
+            --text: #2C2849;
+            --muted: #8A84A3;
+            --brand: #7E72F2;
+            /* New purple brand color */
+            --brand-dark: #6C60E1;
+            --accent: #F2C94C;
+            /* Yellow accent from owl */
+            --card-bg: #FFFFFF;
+            --shadow-color: hsl(248 30% 30% / 0.1);
+            --font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Naskh Arabic", "Droid Arabic Naskh", sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg: #191726;
+                --text: #E2E0F2;
+                --muted: #8A84A3;
+                --brand: #988DF5;
+                --brand-dark: #7E72F2;
+                --card-bg: #23203B;
+                --shadow-color: hsl(248 30% 0% / 0.2);
+            }
+        }
+
+        /* Base and Reset Styles */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            padding: 40px 24px;
+            transition: var(--transition);
+            background-image: radial-gradient(circle at 50% 0%, hsl(248 100% 95% / 0.4), transparent 60%);
+        }
+
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-image: radial-gradient(circle at 50% 0%, hsl(248 20% 15% / 0.4), transparent 60%);
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        main {
+            animation: fadeInUp 0.8s 0.2s ease-out backwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            main {
+                animation: none;
+            }
+        }
+
+        /* Layout & Typography */
+        header,
+        main,
+        footer {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        header {
+            padding-bottom: 40px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -1px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+        }
+
+        h1 {
+            font-size: clamp(2rem, 6vw, 3.25rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--text);
+        }
+
+        .mission-statement {
+            font-size: clamp(1.1rem, 3vw, 1.25rem);
+            max-width: 65ch;
+            margin: 0 auto 40px auto;
+            color: var(--text);
+        }
+
+        .release-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 24px;
+            background-color: var(--card-bg);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--muted);
+            margin-bottom: 80px;
+            box-shadow: 0 4px 12px -2px var(--shadow-color);
+        }
+
+        .os-icons {
+            display: inline-flex;
+            gap: 6px;
+        }
+
+        .os-icons svg {
+            width: 18px;
+            height: 18px;
+            fill: currentColor;
+            opacity: 0.7;
+        }
+
+        /* App Cards Section */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .apps-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .app-card {
+            background-color: var(--card-bg);
+            padding: 32px;
+            border-radius: 24px;
+            text-align: left;
+            transition: var(--transition);
+            box-shadow: 0 8px 24px -8px var(--shadow-color);
+        }
+
+        .app-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px -8px var(--shadow-color);
+        }
+
+        .app-card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--brand);
+        }
+
+        .app-card p {
+            color: var(--muted);
+        }
+
+        .app-card p+p {
+            margin-top: 1em;
+        }
+
+        /* Footer */
+        footer {
+            padding-top: 80px;
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <dotlottie-wc class="logo-mark"
+                src="https://lottie.host/b8947060-63af-407e-9655-fd2316d49e67/5Sz3vDZukX.lottie" autoplay
+                loop></dotlottie-wc>
+            Booma
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Two apps. One mission.</h1>
+            <div class="release-badge">
+                <span>Coming out 2026 on iOS and Android</span>
+            </div>
+        </section>
+
+        <section class="apps">
+            <div class="apps-grid">
+                <div class="app-card">
+                    <h2>Booma Reader</h2>
+                    <p>Booma Readers is an Arabic book reading app designed to spark a lifelong love of learning. With a
+                        rich catalog of fiction and non-fiction, our engaging and joyful platform makes reading easy to
+                        navigate and fun to explore. We empower children through achievements and progress tracking,
+                        while giving parents the tools to follow their child’s journey every step of the way.</p>
+                </div>
+                <div class="app-card">
+                    <h2>Booma Kids Academy</h2>
+                    <p>Booma Kids Academy is an Arabic‑first early‑learning platform that turns play into real progress.
+                        Through short, joyful activities in language, math, science, and the arts, children build strong
+                        foundations step by step, at their own pace.
+                        We celebrate every small win and give parents simple, transparent tools to follow growth day by
+                        day.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Booma</p>
+    </footer>
+
+</body>
+
+</html>
